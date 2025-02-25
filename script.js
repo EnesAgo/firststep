@@ -88,13 +88,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const row = `
                     <tr>
                         <td>${data.projectId}</td>
-                        <td>${data.name}</td>
-                        <td><input type="number" min="1" max="6" value="${data.p1}" data-id="${docId}" data-field="p1"></td>
-                        <td><input type="number" min="1" max="6" value="${data.p2}" data-id="${docId}" data-field="p2"></td>
-                        <td><input type="number" min="1" max="6" value="${data.p3}" data-id="${docId}" data-field="p3"></td>
-                        <td><input type="number" min="1" max="6" value="${data.p4}" data-id="${docId}" data-field="p4"></td>
-                        <td><input type="number" min="1" max="6" value="${data.p5}" data-id="${docId}" data-field="p5"></td>
-                        <td><input type="number" min="1" max="6" value="${data.p6}" data-id="${docId}" data-field="p6"></td>
+                        <td><input type="number" inputmode="numeric" min="1" max="6" value="${data.p1}" data-id="${docId}" data-field="p1"></td>
+                        <td><input type="number" inputmode="numeric" min="1" max="6" value="${data.p2}" data-id="${docId}" data-field="p2"></td>
+                        <td><input type="number" inputmode="numeric" min="1" max="6" value="${data.p3}" data-id="${docId}" data-field="p3"></td>
+                        <td><input type="number" inputmode="numeric" min="1" max="6" value="${data.p4}" data-id="${docId}" data-field="p4"></td>
+                        <td><input type="number" inputmode="numeric" min="1" max="6" value="${data.p5}" data-id="${docId}" data-field="p5"></td>
+                        <td><input type="number" inputmode="numeric" min="1" max="6" value="${data.p6}" data-id="${docId}" data-field="p6"></td>
                         <td class="sum">${sum}</td> 
 
                     </tr>
