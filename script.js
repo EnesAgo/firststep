@@ -4,8 +4,8 @@ const select = document.getElementById("mySelect");
 async function newTeacher() {
     try{
         db.collection("teachers").add({
-            id:1,
-            name: "Muhammed Shej",
+            id: 19,
+            name: "Irena Bacheva",
 
         })
         alert("successfully sent")
@@ -18,27 +18,35 @@ async function newTeacher() {
     }
 }
 async function newProject() {
-    try{
-        db.collection("projects").add({
-            teacherID: 0,
-            projectId: 100,
-            name: "fatih saban",
-            p1:0,
-            p2:0,
-            p3:0,
-            p4:0,
-            p5:0,
-            p6:0,
 
-        })
-        alert("successfully sent")
+    const teacherID=10;
+    const projectIds = [207]
 
 
-    }
-    catch (e) {
-        console.log(e)
-        alert("error")
-    }
+    projectIds.forEach(async (val) => {
+        try{
+            db.collection("projects").add({
+                teacherID: teacherID,
+                projectId: val,
+                p1:0,
+                p2:0,
+                p3:0,
+                p4:0,
+                p5:0,
+                p6:0,
+    
+            })
+            console.log("successfully sent")
+    
+    
+        }
+        catch (e) {
+            console.log(e)
+            alert("error")
+        }
+    })
+
+
 }
 
 
