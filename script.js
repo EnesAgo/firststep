@@ -1,4 +1,6 @@
 const select = document.getElementById("mySelect");
+const projectID = document.getElementById("projectID");
+const submitButton = document.getElementById("submit")
 
 
 async function newTeacher() {
@@ -70,6 +72,54 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     
   });
+
+  submitButton.addEventListener("click", async () => {
+    const inpVal = projectID.value
+    console.log(inpVal)
+
+    const tableBody = document.querySelector("#projectTable tbody");
+
+
+    try{
+
+        const citiesRef = db.collection('projects');
+        const snapshot = await citiesRef.where("projectId", "==", parseInt(inpVal)).get();
+
+
+        if (snapshot.empty) {
+            tableBody.innerHTML = "<tr><td colspan='9'>No projects found.</td></tr>";
+        } else {
+            tableBody.innerHTML=""
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const docId = doc.id; // Firestore document ID
+                const sum = data.p1 + data.p2 + data.p3 + data.p4 + data.p5 + data.p6;
+                const row = `
+                    <tr data-id="${docId}">
+                        <td>${data.projectId}</td>
+                        <td>${data.p1}</td>
+                        <td>${data.p2}</td>
+                        <td>${data.p3}</td>
+                        <td>${data.p4}</td>
+                        <td>${data.p5}</td>
+                        <td>${data.p6}</td>
+
+                        <td class="sum">${sum}</td> 
+
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+
+    }catch(e){
+        console.log(e)
+        alert("error")
+    }
+
+
+  })
 
 
   select.addEventListener("change", async function (event) {
